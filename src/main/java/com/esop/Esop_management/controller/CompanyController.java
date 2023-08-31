@@ -3,6 +3,8 @@ package com.esop.Esop_management.controller;
 import java.util.List;
 
 import com.esop.Esop_management.payload.ApiResponse;
+import com.esop.Esop_management.payload.LoginDto;
+import com.esop.Esop_management.payload.LoginResponse;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,13 +34,13 @@ public class CompanyController {
         //return new ResponseEntity<>(createCompanyDto, HttpStatus.CREATED);
     }
 	@CrossOrigin(origins="*")
-	@PostMapping("login")
-	public ResponseEntity<Object>login(@val @RequestBody CompanyDto companyDto){
-		CompanyDto loginCompanyDto = this.companyService.login(companyDto);
+	@PostMapping("/login")
+	public ResponseEntity<Object>login(@val @RequestBody LoginDto loginDto){
+		LoginResponse loginResponse = this.companyService.loginCompany(loginDto);
 
-		return new ResponseEntity<>(loginCompanyDto,HttpStatus.OK);
+		return ResponseHandler.responseBuilder("login successfully ",HttpStatus.OK,loginResponse);
+
 	}
-
 
     // post - updateuser
 	@CrossOrigin(origins = "*")

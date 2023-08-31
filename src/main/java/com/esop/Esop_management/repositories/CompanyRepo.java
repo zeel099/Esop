@@ -12,6 +12,7 @@ import com.esop.Esop_management.payload.CompanyDto;
 
 public interface CompanyRepo extends JpaRepository<Company,Integer>{
 	
-	Optional<Company>findByEmail(String email);
+	Optional<Company>findOneByEmailAndAndPassword(String email,String password);
+	Company findByEmail(String email);
 	void save(CompanyDto company);
 }
