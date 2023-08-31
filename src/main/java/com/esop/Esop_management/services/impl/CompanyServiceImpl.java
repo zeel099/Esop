@@ -1,6 +1,7 @@
 package com.esop.Esop_management.services.impl;
 
 import java.util.List;
+import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,11 @@ public class CompanyServiceImpl implements CompanyService{
         Company savedUser = this.companyRepo.save(company);
         return this.companyToDto(savedUser);
 	}
-
+	public CompanyDto login(CompanyDto companyDto){
+		Company company = this.dtoToCompany(companyDto);
+		Company loggedUser = this.companyRepo.save(company);
+		return this.companyToDto(loggedUser);
+	}
 	@Override
 	public CompanyDto update(CompanyDto companyDto, Integer comId) {
 		

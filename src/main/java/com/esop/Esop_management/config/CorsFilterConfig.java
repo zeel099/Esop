@@ -16,7 +16,6 @@ public class CorsFilterConfig implements WebMvcConfigurer{
                 .allowedOrigins("*")
                 .allowedMethods("*")
                 .allowedHeaders("*");
-
     }
 
     //    public static final List<String> allowedOrigins = Arrays.asList("yourDomainsHere");

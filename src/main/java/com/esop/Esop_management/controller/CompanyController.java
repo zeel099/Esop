@@ -3,6 +3,7 @@ package com.esop.Esop_management.controller;
 import java.util.List;
 
 import com.esop.Esop_management.payload.ApiResponse;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,14 @@ public class CompanyController {
         return ResponseHandler.responseBuilder("Account created successfully",HttpStatus.OK,createCompanyDto);
         //return new ResponseEntity<>(createCompanyDto, HttpStatus.CREATED);
     }
+	@CrossOrigin(origins="*")
+	@PostMapping("login")
+	public ResponseEntity<Object>login(@val @RequestBody CompanyDto companyDto){
+		CompanyDto loginCompanyDto = this.companyService.login(companyDto);
+
+		return new ResponseEntity<>(loginCompanyDto,HttpStatus.OK);
+	}
+
 
     // post - updateuser
 	@CrossOrigin(origins = "*")

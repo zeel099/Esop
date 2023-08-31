@@ -7,6 +7,7 @@ import com.esop.Esop_management.payload.CompanyDto;
 public interface CompanyService {
 
 	CompanyDto create(CompanyDto companyDto);
+	CompanyDto login(CompanyDto companyDto);
 	CompanyDto update(CompanyDto companyDto,Integer comId);
 	
 	CompanyDto getCompanyById(Integer comId);
