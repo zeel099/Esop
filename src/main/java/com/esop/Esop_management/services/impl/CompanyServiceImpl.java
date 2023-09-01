@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import com.esop.Esop_management.payload.LoginDto;
 import com.esop.Esop_management.payload.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.esop.Esop_management.entity.Company;
@@ -24,8 +23,8 @@ public class CompanyServiceImpl implements CompanyService{
 
 
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
 	@Override
 	public CompanyDto create(CompanyDto companyDto) {
 		Company company = this.dtoToCompany(companyDto);
@@ -39,20 +38,25 @@ public class CompanyServiceImpl implements CompanyService{
 		if(company!=null){
 			String password = loginDto.getPassword();
 			String encodedPassword = company.getPassword();
-			Boolean isPwdRight = passwordEncoder.matches(password,encodedPassword);
-			if(isPwdRight){
-				Optional<Company>company1 = companyRepo.findOneByEmailAndAndPassword(loginDto.getEmail(),encodedPassword);
-				if(company1.isPresent()){
-					return new LoginResponse("Login Success",true);
-				}else{
-					return new LoginResponse("Login Failed",false);
-				}
-			}else{
-				return new LoginResponse("Password is not match",false);
-			}
-		}else{
-			return new LoginResponse("Email is not exists",false);
+			//Boolean isPwdRight = passwordEncoder.matches(password,encodedPassword);
+//			if(isPwdRight){
+//				Optional<Company>company1 = companyRepo.findOneByEmailAndAndPassword(loginDto.getEmail(),encodedPassword);
+//				if(company1.isPresent()){
+//					return new LoginResponse("Login Success",true);
+//				}else{
+//					return new LoginResponse("Login Failed",false);
+//				}
+//			}else{
+//				return new LoginResponse("Password is not match",false);
+//			}
+			return new LoginResponse("Logged in successfully",true);
 		}
+//		else{
+//			return new LoginResponse("Email is not exists",false);
+//		}
+//
+		return new LoginResponse("Logged in successfully",true);
+
 	}
 	@Override
 	public CompanyDto update(CompanyDto companyDto, Integer comId) {
@@ -116,10 +120,10 @@ public class CompanyServiceImpl implements CompanyService{
 		company.setFunding(companyDto.getFunding());
 		company.setMobile(companyDto.getMobile());
 		company.setValuation(companyDto.getValuation());
-		//company.setPassword(companyDto.getPassword());
+		company.setPassword(companyDto.getPassword());
 		company.setEmail(companyDto.getEmail());
 		company.setPrice(companyDto.getPrice());
-		this.passwordEncoder.encode(companyDto.getPassword());
+		//this.passwordEncoder.encode(companyDto.getPassword());
 		return company;
 	}
 	public CompanyDto companyToDto(Company company) {
