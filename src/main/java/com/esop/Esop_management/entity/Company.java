@@ -39,7 +39,7 @@ public class Company {
 	//@Column(unique=true)
 	private String email;
 	private String password;
-
+	private double baseprice;
 //	@OneToOne(mappedBy = "company",cascade = CascadeType.ALL)
 //	private VestingPlan vestingPlan;
 
@@ -48,7 +48,10 @@ public class Company {
 
 	@OneToMany(mappedBy = "company",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Emp>empList;
-	
+
+	@OneToMany(mappedBy = "company",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<Notification>notifications;
+
 //	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 //	@JoinTable(name="user_role",
 //	joinColumns=@JoinColumn(name="company",referencedColumnName="cid"),

@@ -74,6 +74,7 @@ public class CompanyServiceImpl implements CompanyService{
 		company.setPassword(companyDto.getPassword());
 		company.setEmail(companyDto.getEmail());
 		company.setPrice(companyDto.getPrice());
+		company.setBaseprice(companyDto.getBaseprice());
 		Company updatedCompany = this.companyRepo.save(company);
 		CompanyDto companyDto1 = this.companyToDto(updatedCompany);
 		this.companyToDto(updatedCompany);
@@ -123,6 +124,7 @@ public class CompanyServiceImpl implements CompanyService{
 		company.setPassword(companyDto.getPassword());
 		company.setEmail(companyDto.getEmail());
 		company.setPrice(companyDto.getPrice());
+		company.setBaseprice(companyDto.getBaseprice());
 		//this.passwordEncoder.encode(companyDto.getPassword());
 		return company;
 	}
@@ -140,6 +142,7 @@ public class CompanyServiceImpl implements CompanyService{
 		companyDto.setPassword(company.getPassword());
 		companyDto.setValuation(company.getValuation());
 		companyDto.setPrice(company.getPrice());
+		companyDto.setBaseprice(company.getBaseprice());
 		
 		return companyDto;
 	}

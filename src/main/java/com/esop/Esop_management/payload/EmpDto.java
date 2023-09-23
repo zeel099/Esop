@@ -32,6 +32,7 @@ public class EmpDto {
 
 	private String status;
 	private double price;
+
 	private CompanyDto company;
 
 	private VestingPlanDto vestingPlan;

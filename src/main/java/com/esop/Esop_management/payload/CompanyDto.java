@@ -17,6 +17,7 @@ public class CompanyDto {
 	private long esop;
 	private long mobile;
 	private double price;
+	private double baseprice;
 	private String address;
 	private String email;
 	private String password;

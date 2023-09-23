@@ -1,5 +1,8 @@
 package com.esop.Esop_management.controller;
 
+import com.esop.Esop_management.entity.User;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,19 +11,20 @@ import org.springframework.http.ResponseEntity;
 //import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import com.esop.Esop_management.payload.JwtAuthRequest;
 import com.esop.Esop_management.payload.JwtAuthResponse;
 import com.esop.Esop_management.security.JwtTokenHelper;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.AbstractController;
 
 @RestController
 @RequestMapping("/api")
-public class AuthController {
+public class AuthController  {
 
+//
 //	@Autowired
 //	private JwtTokenHelper jwtTokenHelper;
 //
