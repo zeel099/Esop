@@ -17,4 +17,5 @@ public class VestingPlanDto {
 
     private CompanyDto company;
 
+
 }

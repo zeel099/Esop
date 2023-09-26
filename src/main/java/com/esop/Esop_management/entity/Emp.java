@@ -5,9 +5,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -37,10 +39,18 @@ public class Emp {
 	private int exercise;
 
 	private String status;
-
+	private double price;
+	private long account_no;
+	private String ifscno;
 	@ManyToOne
 	private Company company;
 
 	@ManyToOne
 	private VestingPlan vestingPlan;
+
+	@ManyToOne
+	private Transaction transaction;
+
+
+
 }

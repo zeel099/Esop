@@ -71,7 +71,9 @@ public class EmpServiceImpl implements EmpService{
 		emp.setGranted(empDto.getGranted());
 		emp.setDepartment(empDto.getDepartment());
 		emp.setStatus(empDto.getStatus());
-
+		emp.setAccount_no(empDto.getAccount_no());
+		emp.setIfscno(empDto.getIfscno());
+		emp.setPrice(empDto.getPrice());
 		Emp updatedEmp = this.empRepo.save(emp);
 		
 		return this.modelMapper.map(updatedEmp,EmpDto.class);

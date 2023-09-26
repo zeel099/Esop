@@ -32,9 +32,15 @@ public class EmpDto {
 
 	private String status;
 	private double price;
-
+	private String ifscno;
+	private long account_no;
 	private CompanyDto company;
 
 	private VestingPlanDto vestingPlan;
+
+
+
+
+
 	
 }

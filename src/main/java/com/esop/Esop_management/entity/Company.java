@@ -52,6 +52,11 @@ public class Company {
 	@OneToMany(mappedBy = "company",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Notification>notifications;
 
+	@OneToMany(mappedBy = "company",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<Transaction>transactionList;
+
+
+
 //	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 //	@JoinTable(name="user_role",
 //	joinColumns=@JoinColumn(name="company",referencedColumnName="cid"),

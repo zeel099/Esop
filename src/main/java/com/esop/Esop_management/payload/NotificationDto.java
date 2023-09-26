@@ -5,11 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Time;
+
 @NoArgsConstructor
 @Getter
 @Setter
 public class NotificationDto {
     private int nid;
     private String notification;
-    private boolean status;
+
+    private String time;
+    private CompanyDto company;
+
 }

@@ -70,7 +70,7 @@ public class EmpController {
 		List<EmpDto>emp = this.empService.getEmpByCompany(cId);
 		ResponseEntity<List<EmpDto>> listResponseEntity = new ResponseEntity<>(emp, HttpStatus.OK);
 		return listResponseEntity;
-//        return new ResponseEntity<>(plans, HttpStatus.OK);
+		//return new ResponseEntity<>(plans, HttpStatus.OK);
 		//return new ResponseEntity<List<VestingPlanDto>>(plans,HttpStatus.OK);
 	}
 	@CrossOrigin(origins = "*")
@@ -79,8 +79,8 @@ public class EmpController {
 
 		List<EmpDto>emp = this.empService.getEmpByPlan(pId);
 		ResponseEntity<List<EmpDto>> listResponseEntity = new ResponseEntity<>(emp, HttpStatus.OK);
-		return listResponseEntity;
-//        return new ResponseEntity<>(plans, HttpStatus.OK);
+		//return listResponseEntity;
+        return new ResponseEntity<>(emp, HttpStatus.OK);
 		//return new ResponseEntity<List<VestingPlanDto>>(plans,HttpStatus.OK);
 	}
 	@CrossOrigin(origins = "*")
