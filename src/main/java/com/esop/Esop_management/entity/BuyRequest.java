@@ -4,26 +4,26 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Entity
-@Setter
 @Getter
-@Table(name = "sellRequest")
+@Setter
+@Table(name="buy_request")
 @NoArgsConstructor
-public class SellRequest {
+public class BuyRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int reqId;
+    private int buyreq;
+
     private int esop;
     private String status;
 
     @ManyToOne
-    private Company company;
+    private SellRequest sellRequest;
 
     @ManyToOne
     private Emp emp;
 
-    @ManyToOne
-    private BuyRequest buyRequest;
 }

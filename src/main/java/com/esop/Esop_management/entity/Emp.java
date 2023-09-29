@@ -49,7 +49,9 @@ public class Emp {
 	private Grant_Transaction transaction;
 
 	@ManyToOne
-	private SellRequest sellReqest;
+	private SellRequest sellRequest;
 
+	@ManyToOne
+	private BuyRequest buyRequest;
 
 }

@@ -4,6 +4,7 @@ import com.esop.Esop_management.entity.Company;
 import com.esop.Esop_management.entity.Emp;
 import com.esop.Esop_management.entity.SellRequest;
 import com.esop.Esop_management.exceptions.ResourceNotFoundException;
+import com.esop.Esop_management.payload.CompanyDto;
 import com.esop.Esop_management.payload.SellRequestDto;
 import com.esop.Esop_management.repositories.CompanyRepo;
 import com.esop.Esop_management.repositories.EmpRepo;
@@ -12,6 +13,9 @@ import com.esop.Esop_management.services.SellRequestService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SellRequestServiceImpl implements SellRequestService {
@@ -41,6 +45,34 @@ public class SellRequestServiceImpl implements SellRequestService {
         sellRequest.setEmp(emp);
 
         SellRequest saveReq = this.sellRequestRepo.save(sellRequest);
+        return this.modelMapper.map(sellRequest,SellRequestDto.class);
+    }
+
+    @Override
+    public List<SellRequestDto> getAllRequest() {
+
+        List<SellRequest> requests = this.sellRequestRepo.findAll();
+
+        List<SellRequestDto> reqDto = requests.stream().map(req->this.modelMapper.map(req,SellRequestDto.class)).collect(Collectors.toList());
+        return reqDto;
+    }
+
+    @Override
+    public SellRequestDto updateRequest(SellRequestDto sellRequestDto, Integer reqId) {
+        SellRequest sellRequest = this.sellRequestRepo.findById(reqId).orElseThrow(()->new ResourceNotFoundException("sellRequest","reqId",reqId));
+        sellRequest.setEsop(sellRequestDto.getEsop());
+        sellRequest.setStatus(sellRequestDto.getStatus());
+
+        SellRequest updateSellRequest = this.sellRequestRepo.save(sellRequest);
+        return this.modelMapper.map(updateSellRequest,SellRequestDto.class);
+    }
+
+    @Override
+    public SellRequestDto deleteSellRequest(Integer sellReqId) {
+
+        SellRequest sellRequest = this.sellRequestRepo.findById(sellReqId).orElseThrow(()->new ResourceNotFoundException("sellRequeest","sellReqId",sellReqId));
+        this.sellRequestRepo.delete(sellRequest);
+
         return this.modelMapper.map(sellRequest,SellRequestDto.class);
     }
 }
