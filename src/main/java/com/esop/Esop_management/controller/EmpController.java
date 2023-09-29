@@ -1,6 +1,7 @@
 package com.esop.Esop_management.controller;
 
 import com.esop.Esop_management.payload.*;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.esop.Esop_management.response.ResponseHandler;
 import com.esop.Esop_management.services.EmpService;
+import com.razorpay.*;
 
 import lombok.val;
 
@@ -88,5 +90,20 @@ public class EmpController {
 	public ResponseEntity<List<EmpDto>> searchEmp(@PathVariable("keyword") String keyword){
 		List<EmpDto>result = this.empService.searchEmp(keyword);
 		return new ResponseEntity<List<EmpDto>>(result,HttpStatus.OK);
+	}
+
+	@PostMapping("/buy")
+	@ResponseBody
+	public String createOrder(@RequestBody Map<String,Object>data) throws RazorpayException {
+		int amt = Integer.parseInt(data.get("amount").toString());
+		var razorpayClient = new RazorpayClient("rzp_test_DWlfrPAoNNsfIf","PNTFVBO3X4gTma3m2d7wLUzE");
+		JSONObject options = new JSONObject();
+		options.put("amt", amt*1000);
+		options.put("currency", "INR");
+		options.put("receipt", "txn_123456");
+		Order order = razorpayClient.Orders.create(options);
+
+		System.out.println(order);
+		return "abs";
 	}
 }

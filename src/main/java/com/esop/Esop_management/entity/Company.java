@@ -55,7 +55,8 @@ public class Company {
 	@OneToMany(mappedBy = "company",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Transaction>transactionList;
 
-
+	@OneToMany(mappedBy = "company",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<ContactToCompany>contacts;
 
 //	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 //	@JoinTable(name="user_role",
