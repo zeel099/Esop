@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.esop.Esop_management.response.ResponseHandler.responseBuilder;
+
 @RestController
 @RequestMapping("/api")
 public class EmpController {
@@ -37,10 +39,18 @@ public class EmpController {
 
 	@CrossOrigin(origins = "*")
 	@PutMapping("/{empId}")
-    public ResponseEntity<EmpDto> updateEmp(@val @RequestBody EmpDto empDto, @PathVariable("empId") Integer empId){
+    public ResponseEntity<Object> updateEmp(@val @RequestBody EmpDto empDto, @PathVariable("empId") Integer empId){
         EmpDto updateEmp = this.empService.updateEmp(empDto, empId);
-        return ResponseEntity.ok(updateEmp);
+		return ResponseHandler.responseBuilder("Plan updated successfully", HttpStatus.OK,updateEmp);
+
+		//return ResponseEntity.ok(updateEmp);
     }
+//	@CrossOrigin(origins = "*")
+//	@PutMapping("/{eId}")
+//	public ResponseEntity<EmpDto> updateGrantedEsop(@val @RequestBody EmpDto empDto, @PathVariable("eId") Integer eId){
+//		EmpDto updateEmp = this.empService.updateGrantedEsop(empDto, eId);
+//		return ResponseEntity.ok(updateEmp);
+//	}
 	//@CrossOrigin(origins = "http://localhost:3000")
 	@CrossOrigin(origins = "*")
 	@DeleteMapping("/{empId}")
@@ -92,18 +102,18 @@ public class EmpController {
 		return new ResponseEntity<List<EmpDto>>(result,HttpStatus.OK);
 	}
 
-	@PostMapping("/buy")
-	@ResponseBody
-	public String createOrder(@RequestBody Map<String,Object>data) throws RazorpayException {
-		int amt = Integer.parseInt(data.get("amount").toString());
-		var razorpayClient = new RazorpayClient("rzp_test_DWlfrPAoNNsfIf","PNTFVBO3X4gTma3m2d7wLUzE");
-		JSONObject options = new JSONObject();
-		options.put("amt", amt*1000);
-		options.put("currency", "INR");
-		options.put("receipt", "txn_123456");
-		Order order = razorpayClient.Orders.create(options);
-
-		System.out.println(order);
-		return "abs";
-	}
+//	@PostMapping("/buy")
+//	@ResponseBody
+//	public String createOrder(@RequestBody Map<String,Object>data) throws RazorpayException {
+//		int amt = Integer.parseInt(data.get("amount").toString());
+//		var razorpayClient = new RazorpayClient("rzp_test_DWlfrPAoNNsfIf","PNTFVBO3X4gTma3m2d7wLUzE");
+//		JSONObject options = new JSONObject();
+//		options.put("amt", amt*1000);
+//		options.put("currency", "INR");
+//		options.put("receipt", "txn_123456");
+//		Order order = razorpayClient.Orders.create(options);
+//
+//		System.out.println(order);
+//		return "abs";
+//	}
 }

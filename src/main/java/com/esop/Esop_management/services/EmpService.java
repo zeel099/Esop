@@ -21,4 +21,6 @@ public interface EmpService {
     EmpDto deleteEmployee(Integer empId);
 
     List<EmpDto> searchEmp(String keyword);
+
+    //EmpDto updateGrantedEsop(EmpDto empDto,Integer eId);
 }

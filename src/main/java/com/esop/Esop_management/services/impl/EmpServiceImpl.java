@@ -68,18 +68,25 @@ public class EmpServiceImpl implements EmpService{
 		emp.setMobile(empDto.getMobile());
 		emp.setJoiningdate(empDto.getJoiningDate());
 		emp.setExercise(empDto.getExercise());
-		emp.setGranted(empDto.getGranted());
+		//emp.setGranted(empDto.getGranted());
 		emp.setDepartment(empDto.getDepartment());
 		emp.setStatus(empDto.getStatus());
 		emp.setAccount_no(empDto.getAccount_no());
 		emp.setIfscno(empDto.getIfscno());
 		emp.setPrice(empDto.getPrice());
+		emp.setGranted(empDto.getGranted());
 		Emp updatedEmp = this.empRepo.save(emp);
+
 		
 		return this.modelMapper.map(updatedEmp,EmpDto.class);
-		
 	}
-
+//	@Override
+//	public EmpDto updateGrantedEsop(EmpDto empDto,Integer eId) {
+//		Emp emp = this.empRepo.findById(eId).orElseThrow();
+//		emp.setGranted(empDto.getGranted());
+//		Emp updatedGrated = this.empRepo.save(emp);
+//		return this.modelMapper.map(updatedGrated,EmpDto.class);
+//	}
 	@Override
 	public EmpDto getEmpById(Integer empId) {
 		// TODO Auto-generated method stub
@@ -136,5 +143,9 @@ public class EmpServiceImpl implements EmpService{
 		List<EmpDto>empDtos = empList.stream().map((emp)->this.modelMapper.map(emp,EmpDto.class)).collect((Collectors.toList()) );
 		return empDtos;
 	}
+
+
+
+
 
 }

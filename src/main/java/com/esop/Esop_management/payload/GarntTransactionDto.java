@@ -9,12 +9,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TransactionDto {
+public class GarntTransactionDto {
 
-    private Long tId;
-    private String cname;
-    private String orderType;
-    private double price;
+    private Long gtId;
+    private String date;
+    private int esop;
+
 
     private CompanyDto company;
     private EmpDto emp;

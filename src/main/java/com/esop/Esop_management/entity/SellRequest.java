@@ -6,23 +6,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
 @Setter
+@Getter
+@Table(name = "sellRequest")
 @NoArgsConstructor
-@Table(name = "transaction")
-public class Transaction {
+public class SellRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long tId;
-    private String cname;
-    private String orderType;
-    private double price;
+    private int reqId;
+    private int esop;
+    private String status;
 
     @ManyToOne
     private Company company;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne
     private Emp emp;
 
 }

@@ -1,14 +1,11 @@
 package com.esop.Esop_management.entity;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 
 
+import com.esop.Esop_management.payload.SellRequestDto;
 import jakarta.persistence.*;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -53,10 +50,13 @@ public class Company {
 	private List<Notification>notifications;
 
 	@OneToMany(mappedBy = "company",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	private List<Transaction>transactionList;
+	private List<Grant_Transaction>transactionList;
 
 	@OneToMany(mappedBy = "company",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<ContactToCompany>contacts;
+
+	@OneToMany(mappedBy="company",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<SellRequest>sellRequestList;
 
 //	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 //	@JoinTable(name="user_role",
