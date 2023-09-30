@@ -8,7 +8,7 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-@Table(name = "sellRequest")
+@Table(name = "SellRequest")
 @NoArgsConstructor
 public class SellRequest {
 
@@ -26,4 +26,9 @@ public class SellRequest {
 
     @ManyToOne
     private BuyRequest buyRequest;
+
+    @ManyToOne
+    private Transaction transaction;
+
+
 }

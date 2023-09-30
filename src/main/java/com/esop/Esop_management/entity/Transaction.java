@@ -1,31 +1,34 @@
 package com.esop.Esop_management.entity;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Entity
 @Getter
 @Setter
-@Table(name="BuyRequest")
 @NoArgsConstructor
-public class BuyRequest {
+@Table(name="Final_Transaction")
+public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int buyreq;
+    private int tId;
+    private String date;
+    private double price;
 
-    private int esop;
-    private String status;
+    @ManyToOne
+    private Company company;
+
+    @ManyToOne
+    private BuyRequest buyRequest;
 
     @ManyToOne
     private SellRequest sellRequest;
 
-    @ManyToOne
-    private Emp emp;
 
-    @ManyToOne
-    private Transaction transaction;
+
 }
