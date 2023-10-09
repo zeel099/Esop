@@ -1,7 +1,3 @@
-#Esop 
-
-An Employee Stock Ownership Plan (ESOP) is a unique retirement plan that allows employees to become partial owners of the company they work for. Through an ESOP, employees acquire shares of the company's stock over time, which can lead to increased engagement, motivation, and financial benefits.
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
