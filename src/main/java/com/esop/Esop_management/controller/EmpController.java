@@ -29,7 +29,7 @@ public class EmpController {
 	//@CrossOrigin(origins = "https://turbo-space-umbrella-5prwv9q494rfvvq4-3001.app.github.dev")
 	@CrossOrigin(origins = "*")
 	@PostMapping("/company/{cId}/plan/{pId}/register")
-	public ResponseEntity<Object> createEmp(@val @RequestBody EmpDto empDto,@PathVariable Integer pId,@PathVariable Integer cId){
+	public ResponseEntity<Object> createEmp( EmpDto empDto,@PathVariable Integer pId,@PathVariable Integer cId){
 
 		EmpDto createEmployee = this.empService.createEmp(empDto,pId,cId);
 		//EmpDto createdEmp = this.empService.createEmp(empDto);

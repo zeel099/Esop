@@ -55,6 +55,7 @@ public class EmpServiceImpl implements EmpService{
 		return this.modelMapper.map(savedEmp,EmpDto.class);
 	}
 
+
 	@Override
 	public EmpDto updateEmp(EmpDto empDto, Integer empId) {
 		Emp emp = this.empRepo.findById(empId).orElseThrow();
@@ -124,28 +125,19 @@ public class EmpServiceImpl implements EmpService{
 
 		List<EmpDto> userDtos = employees.stream().map(emp->this.modelMapper.map(emp,EmpDto.class)).collect(Collectors.toList());
 		return userDtos;
-		//return null;
-	}
 
+	}
 	@Override
 	public EmpDto deleteEmployee(Integer empId) {
-
 		Emp emp = this.empRepo.findById(empId).
 				orElseThrow(()->new ResourceNotFoundException("Emp","empId",empId));
 		this.empRepo.delete(emp);
 		return this.modelMapper.map(emp,EmpDto.class);
-
 	}
-
 	@Override
 	public List<EmpDto> searchEmp(String keyword) {
 		List<Emp>empList = this.empRepo.searchByEmail("%"+keyword+"%");
 		List<EmpDto>empDtos = empList.stream().map((emp)->this.modelMapper.map(emp,EmpDto.class)).collect((Collectors.toList()) );
 		return empDtos;
 	}
-
-
-
-
-
 }
